@@ -1,6 +1,17 @@
 {
   "versoes": [
     {
+      "versao": "0.3.1",
+      "data": "19/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.1",
+      "novidades": [
+        "Anexos no Depanel Agent: cole prints, arraste ou anexe imagens, PDFs, textos e o projeto em .zip/.tar.gz",
+        "Publicar um site ou app enviando o .zip no chat do agente",
+        "Endereço grátis da máquina do painel usa o IP público",
+        "Alça de redimensionar do balão mais clara"
+      ]
+    },
+    {
       "versao": "0.3.0",
       "data": "19/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.0",
