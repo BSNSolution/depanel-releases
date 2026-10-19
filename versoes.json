@@ -1,0 +1,16 @@
+{
+  "versoes": [
+    {
+      "versao": "0.3.0",
+      "data": "19/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.0",
+      "novidades": [
+        "Depanel Agent: use o painel conversando (cria sites, apps e bancos, move serviços, troca domínios), com confirmação de cada ação",
+        "Configuração de IA: OpenAI, Anthropic ou compatível, com a lista de modelos vinda do provedor",
+        "Gaveta e balão do agente, com lista de conversas e redimensionar",
+        "Atualização pelo menu: aviso de versão nova e um clique para atualizar",
+        "Primeiro acesso pela tela e área Importar (Dokploy, Easypanel, Coolify e Docker)"
+      ]
+    }
+  ]
+}
