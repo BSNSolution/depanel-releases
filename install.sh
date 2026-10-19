@@ -18,7 +18,7 @@
 # ESTE ARQUIVO É GERADO por deploy/montar-instalador.mts a partir de deploy/instalador.modelo.sh.
 set -eu
 
-VERSAO="0.3.1"
+VERSAO="0.3.2"
 IMAGEM_PADRAO="ghcr.io/bsnsolution/bsn-depanel:${VERSAO}"
 
 # Tudo dentro de funções: se o download cortar no meio, nada roda pela metade.
@@ -108,7 +108,7 @@ name: depanel-casa
 
 services:
   api:
-    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.1}
+    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.2}
     restart: unless-stopped
     env_file: .env
     environment:
@@ -133,7 +133,7 @@ services:
     stop_grace_period: 20s
 
   worker:
-    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.1}
+    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.2}
     restart: unless-stopped
     command: ["node", "apps/worker/dist/principal.js"]
     env_file: .env
@@ -578,9 +578,9 @@ DEPANEL_RETENCAO_METRICAS=90d
 DEPANEL_BACKUP_DIAS=14
 DEPANEL_BACKUP_HORA=03
 DEPANEL_PASTA_BACKUP=./backups
-# Login por OIDC (opcional; ex.: BSN Auth, Keycloak, Authentik):
+# Login por OIDC (opcional; ex.: Keycloak, Authentik, Entra ID):
 # DEPANEL_OIDC_EMISSOR=https://auth.exemplo.com.br/oidc
-# DEPANEL_OIDC_CLIENT_ID=bsn-depanel
+# DEPANEL_OIDC_CLIENT_ID=depanel
 # DEPANEL_OIDC_CLIENT_SECRET=
 FIM_ENV
   chmod 600 "$PASTA/.env"

@@ -1,6 +1,18 @@
 {
   "versoes": [
     {
+      "versao": "0.3.2",
+      "data": "19/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.2",
+      "novidades": [
+        "Anexos no Depanel Agent: prints, PDFs, textos e pacotes .zip/.tar.gz no chat",
+        "Atualização mais segura: confere se a versão pode ser baixada, baixa antes de trocar e avisa quando não foi aplicada",
+        "Correção: serviços do mesmo ambiente implantados juntos não falham mais ao criar a rede",
+        "Correção: o painel não cai quando o banco reinicia",
+        "Agente das máquinas 0.20.0"
+      ]
+    },
+    {
       "versao": "0.3.0",
       "data": "19/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.0",

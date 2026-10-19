@@ -4,5 +4,7 @@
 - `install.sh`: instalador de 1 comando.
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/BSNSolution/depanel-releases/main/install.sh | sudo sh
+curl -sSL https://depanel.bsncloud.com.br/install.sh | sudo sh
 ```
+
+Site e documentação: https://depanel.bsncloud.com.br
