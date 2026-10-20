@@ -1,8 +1,8 @@
 #!/bin/sh
 # Bsn Depanel — instalador de 1 comando (VM, VPS ou servidor dedicado, Linux amd64/arm64).
 #
-#   curl -sSL https://<endereço>/install.sh | sh
-#   curl -sSL https://<endereço>/install.sh | sh -s -- --dominio painel.exemplo.com.br --email voce@exemplo.com.br
+#   curl -fsSL https://<endereço>/install.sh | sh
+#   curl -fsSL https://<endereço>/install.sh | sh -s -- --dominio painel.exemplo.com.br --email voce@exemplo.com.br
 #
 # Rodar de novo atualiza (mantém configuração e dados). Opções:
 #   --dominio <host>        endereço do painel (sem ele: <ip-público>.sslip.io)
@@ -18,7 +18,7 @@
 # ESTE ARQUIVO É GERADO por deploy/montar-instalador.mts a partir de deploy/instalador.modelo.sh.
 set -eu
 
-VERSAO="0.3.2"
+VERSAO="0.3.3"
 IMAGEM_PADRAO="ghcr.io/bsnsolution/bsn-depanel:${VERSAO}"
 
 # Tudo dentro de funções: se o download cortar no meio, nada roda pela metade.
@@ -57,7 +57,7 @@ porta_ocupada() {
 
 ajuda() {
   cat <<'FIM_AJUDA'
-Bsn Depanel — instalador. Uso: curl -sSL <endereço>/install.sh | sudo sh -s -- [opções]
+Bsn Depanel — instalador. Uso: curl -fsSL <endereço>/install.sh | sudo sh -s -- [opções]
   --dominio <host>        endereço do painel (sem ele: <ip-público>.sslip.io)
   --email <e-mail>        e-mail dos avisos do Let's Encrypt (a conta de admin é criada pela tela)
   --borda <cidr>          proxy à frente que manda PROXY protocol (ex.: 203.0.113.10/32)
@@ -108,7 +108,7 @@ name: depanel-casa
 
 services:
   api:
-    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.2}
+    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.3}
     restart: unless-stopped
     env_file: .env
     environment:
@@ -133,7 +133,7 @@ services:
     stop_grace_period: 20s
 
   worker:
-    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.2}
+    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.3}
     restart: unless-stopped
     command: ["node", "apps/worker/dist/principal.js"]
     env_file: .env
@@ -351,7 +351,7 @@ FIM_CASA_INICIAR_DEPANEL
 conferir_sistema() {
   [ "$(uname -s)" = Linux ] || erro "o Depanel instala em Linux (VM, VPS ou dedicado)."
   case "$(uname -m)" in x86_64|amd64|aarch64|arm64) ;; *) erro "arquitetura $(uname -m) não suportada (use amd64 ou arm64)." ;; esac
-  [ "$(id -u)" = 0 ] || erro "rode como root: curl -sSL <endereço>/install.sh | sudo sh"
+  [ "$(id -u)" = 0 ] || erro "rode como root: curl -fsSL <endereço>/install.sh | sudo sh"
   tem curl || erro "precisa do curl."
   _mem=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo 2>/dev/null || echo 0)
   [ "$_mem" -ge 1800 ] || aviso "a máquina tem ${_mem} MB de memória; o recomendado é 2 GB ou mais."
@@ -397,6 +397,8 @@ gravar_arquivos() {
   chmod 700 "$PASTA" "$PASTA/agente-local"
   # A API roda como o usuário node (uid 1000) e deixa ali o token do agente desta máquina.
   chown 1000:1000 "$PASTA/agente-local"
+  # A API (gid 1000) lê as cópias do banco; o resto da máquina não.
+  chgrp 1000 "$PASTA/backups" && chmod 750 "$PASTA/backups"
   cat >"$PASTA/compose.yml" <<'FIM_COMPOSE_DEPANEL'
 # Bsn Depanel — produção (uma máquina). Uso: docker compose --env-file .env up -d
 # Um proxy só por máquina: o agente desta máquina ("Este computador") sobe o proxy de domínios, que
@@ -514,16 +516,21 @@ FIM_COMPOSE_DEPANEL
 # Backup diário do banco do Depanel: pg_dump -Fc em /backups, apaga os mais velhos que $DIAS dias.
 # Também roda uma cópia logo ao subir, para nunca ficar sem nenhuma.
 set -eu
+# A API (usuário node, gid 1000) lista e baixa as cópias: a pasta e os arquivos ficam com o grupo dela.
+chgrp 1000 /backups && chmod 750 /backups || echo "aviso: não consegui ajustar a permissão de /backups" >&2
 copiar() {
   arquivo="/backups/depanel-$(date +%Y-%m-%d_%H%M).dump"
   if pg_dump -Fc -f "$arquivo.parcial"; then
     mv "$arquivo.parcial" "$arquivo"
+    chgrp 1000 "$arquivo" && chmod 640 "$arquivo" || true
     echo "backup ok: $arquivo ($(du -h "$arquivo" | cut -f1))"
   else
     rm -f "$arquivo.parcial"
     echo "backup FALHOU" >&2
   fi
   find /backups -name 'depanel-*.dump' -mtime "+$DIAS" -delete
+  # Cópias antigas (de antes do ajuste de grupo) também ficam legíveis pela API.
+  find /backups -name 'depanel-*.dump' ! -group 1000 -exec chgrp 1000 {} + -exec chmod 640 {} + 2>/dev/null || true
 }
 copiar
 while true; do

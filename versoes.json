@@ -1,6 +1,20 @@
 {
   "versoes": [
     {
+      "versao": "0.3.3",
+      "data": "20/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.3",
+      "novidades": [
+        "Menu reorganizado: Proxmox vira Servidor dedicado; Usuários e Auditoria viram Equipe; DNS e Certificados em Domínios; Monitores e Canais em Alertas",
+        "Página da máquina com abas (apps, contêineres, Docker, rede e portas, programas, segurança, discos, terminal e cluster) e renomear máquina",
+        "Uso de um projeto ou de uma pasta: CPU, memória e rede somados, com quem mais usa agora",
+        "Mover fácil: botão Mover no serviço e Mover para pasta no projeto",
+        "Favoritos e Acesso rápido no Início; primeiros passos podem ser pulados ou ocultados",
+        "Segurança: OIDC pede a verificação em duas etapas de quem a ligou; credenciais do OTLP escondidas de quem só lê",
+        "Correções: backup do painel aparecia como pasta não montada; filtro por tag e filtros de uma opção"
+      ]
+    },
+    {
       "versao": "0.3.2",
       "data": "19/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.2",
