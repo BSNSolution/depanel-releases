@@ -1,6 +1,15 @@
 {
   "versoes": [
     {
+      "versao": "0.3.5",
+      "data": "20/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.5",
+      "novidades": [
+        "Criar aplicação ficou mais simples: o Novo serviço pede só o nome e onde roda",
+        "De onde vem (GitHub, Git, Docker, .zip) e como montar ficam na Visão geral do app, com Salvar e implantar e um Trocar depois"
+      ]
+    },
+    {
       "versao": "0.3.4",
       "data": "20/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.4",
