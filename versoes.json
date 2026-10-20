@@ -1,6 +1,17 @@
 {
   "versoes": [
     {
+      "versao": "0.3.7",
+      "data": "20/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.7",
+      "novidades": [
+        "Agente das máquinas 0.21.0 (Nixpacks, Heroku e Paketo Buildpacks): atualize as máquinas",
+        "Mais segurança na fonte do app: token só vai ao servidor do repositório, sem link para fora do repositório, site estático sem arquivos ocultos",
+        "Trocar o repositório desliga o implantar a cada push do antigo e avisa",
+        "Correções: renomear app sem fonte, Cancelar no cartão De onde vem, erros de campo visíveis, espera de 0 s, download do Railpack/Nixpacks/pack nas máquinas instaladas"
+      ]
+    },
+    {
       "versao": "0.3.6",
       "data": "20/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.6",
