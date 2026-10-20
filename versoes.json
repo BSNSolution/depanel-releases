@@ -1,6 +1,17 @@
 {
   "versoes": [
     {
+      "versao": "0.3.4",
+      "data": "20/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.4",
+      "novidades": [
+        "Aplicação: site ou app seu numa escolha só, com abas GitHub, GitLab, Bitbucket, Gitea, Git, Docker e Enviar arquivo",
+        "Trocar a fonte depois, na configuração do serviço (portas, volumes, domínios e variáveis continuam)",
+        "Novos jeitos de montar: Nixpacks, Heroku Buildpacks e Paketo Buildpacks",
+        "Correções: salvar a configuração não apaga mais o balanceamento; repositório com ramo padrão não some mais ao escolher"
+      ]
+    },
+    {
       "versao": "0.3.3",
       "data": "20/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.3",
