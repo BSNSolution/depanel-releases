@@ -1,6 +1,17 @@
 {
   "versoes": [
     {
+      "versao": "0.3.8",
+      "data": "20/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.8",
+      "novidades": [
+        "Trocar o repositório também remove os previews do repositório antigo",
+        "Repositório http:// que redireciona para https:// leva o token",
+        "Download interrompido do Railpack/Nixpacks/pack não deixa sobra",
+        "Agente 0.21.1"
+      ]
+    },
+    {
       "versao": "0.3.7",
       "data": "20/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.7",
