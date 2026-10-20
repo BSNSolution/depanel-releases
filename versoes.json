@@ -1,6 +1,14 @@
 {
   "versoes": [
     {
+      "versao": "0.3.6",
+      "data": "20/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.6",
+      "novidades": [
+        "Banco de dados com nome: ao criar um banco, o nome passou a ser obrigatório."
+      ]
+    },
+    {
       "versao": "0.3.5",
       "data": "20/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.3.5",

@@ -18,7 +18,7 @@
 # ESTE ARQUIVO É GERADO por deploy/montar-instalador.mts a partir de deploy/instalador.modelo.sh.
 set -eu
 
-VERSAO="0.3.5"
+VERSAO="0.3.6"
 IMAGEM_PADRAO="ghcr.io/bsnsolution/bsn-depanel:${VERSAO}"
 
 # Tudo dentro de funções: se o download cortar no meio, nada roda pela metade.
@@ -108,7 +108,7 @@ name: depanel-casa
 
 services:
   api:
-    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.5}
+    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.6}
     restart: unless-stopped
     env_file: .env
     environment:
@@ -133,7 +133,7 @@ services:
     stop_grace_period: 20s
 
   worker:
-    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.5}
+    image: ${DEPANEL_IMAGEM:-ghcr.io/bsnsolution/bsn-depanel:0.3.6}
     restart: unless-stopped
     command: ["node", "apps/worker/dist/principal.js"]
     env_file: .env
