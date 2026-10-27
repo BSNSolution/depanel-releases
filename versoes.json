@@ -1,6 +1,17 @@
 {
   "versoes": [
     {
+      "versao": "0.5.0",
+      "data": "27/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.0",
+      "novidades": [
+        "Licença do Empresarial: chave automática depois do pagamento (R$ 149/mês ou R$ 1.490/ano por painel)",
+        "Configurações → Licença e aviso no menu",
+        "Quem já usava os recursos do Empresarial tem 3 dias para ativar",
+        "Sem licença nada é apagado"
+      ]
+    },
+    {
       "versao": "0.4.0",
       "data": "27/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.4.0",
