@@ -1,6 +1,14 @@
 {
   "versoes": [
     {
+      "versao": "0.5.1",
+      "data": "27/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.1",
+      "novidades": [
+        "Agente 0.22.1: em máquina sem Docker lê arquivos e roda comandos direto"
+      ]
+    },
+    {
       "versao": "0.5.0",
       "data": "27/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.0",
