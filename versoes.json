@@ -1,6 +1,17 @@
 {
   "versoes": [
     {
+      "versao": "0.5.2",
+      "data": "28/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.2",
+      "novidades": [
+        "Borda HAProxy: confirmação com a lista do que muda antes de gravar, regra curinga respeitada e mapa sincronizado ao remover máquina",
+        "Aviso Ainda não está valendo mais preciso (por máquina, ignora ajustes que valem na hora)",
+        "Licença: renovação mais robusta, aviso antes de vencer e login único sempre liberado para contas sem senha",
+        "Agente 0.22.2"
+      ]
+    },
+    {
       "versao": "0.5.1",
       "data": "27/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.1",
