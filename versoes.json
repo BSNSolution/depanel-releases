@@ -1,6 +1,18 @@
 {
   "versoes": [
     {
+      "versao": "0.5.3",
+      "data": "29/10/2026",
+      "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.3",
+      "novidades": [
+        "Agente 0.22.3: mapa da borda lido como o HAProxy lê",
+        "Borda só mexe sozinha nas linhas que o painel pôs",
+        "Licença: colar a mesma chave não reabre licença vencida",
+        "Terminal aberto fecha ao perder a sessão ou a permissão",
+        "Correções no log da implantação e no comentário do PR"
+      ]
+    },
+    {
       "versao": "0.5.2",
       "data": "28/10/2026",
       "imagem": "ghcr.io/bsnsolution/bsn-depanel:0.5.2",
